@@ -50,7 +50,7 @@ func LogOption() ServeOption {
 			w.WriteHeader(200)
 			wnf, errs := newWriteErrNotifier(w)
 			lwriter.WriterGroup.AddWriter(wnf)
-			log.Event(n.Context(), "log API client connected") //nolint deprecated
+			log.Info("log API client connected")
 			<-errs
 		})
 		return mux, nil
