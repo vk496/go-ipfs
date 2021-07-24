@@ -2,10 +2,11 @@ package corehttp
 
 import (
 	"context"
+	"fmt"
 	"testing"
 	"time"
 
-	core "github.com/ipfs/go-ipfs/core"
+	"github.com/ipfs/go-ipfs/core"
 
 	inet "github.com/libp2p/go-libp2p-core/network"
 	swarmt "github.com/libp2p/go-libp2p-swarm/testing"
@@ -41,6 +42,7 @@ func TestPeersTotal(t *testing.T) {
 	node := &core.IpfsNode{PeerHost: hosts[0]}
 	collector := IpfsNodeCollector{Node: node}
 	actual := collector.PeersTotalValues()
+	fmt.Println("actual:", actual)
 	if len(actual) != 1 {
 		t.Fatalf("expected 1 peers transport, got %d", len(actual))
 	}
